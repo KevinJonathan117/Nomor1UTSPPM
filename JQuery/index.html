@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
     <style>
         .ui-footer {
-            position:fixed;
+            position: fixed;
             bottom: 0;
             width: 100%;
         }
@@ -37,18 +37,23 @@
             <h1>Informasi Cicilan</h1>
         </header>
         <article data-role="content">
+            <div id="contents">
+
+            </div>
             <a href="#win1">Go to Input Pinjaman</a>
         </article>
         <footer data-role="footer">
             <h1>Powered By Kevin Jonathan</h1>
         </footer>
     </section>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script>
         var jumlahPinjaman = [];
         var waktuPinjaman = [];
         var bungaPinjaman = [];
+        var counter = 0;
         $(function () {
             $("#konfirmasi").bind("tap", tapHandler);
 
@@ -56,10 +61,10 @@
                 var bunga;
                 var waktuPinjam = parseFloat($(".waktuPinjaman").val());
                 var jumlahPinjam = parseFloat($(".jumlahPinjaman").val());
-                if (waktuPinjam < 1) {
+                if (waktuPinjam < 1 || waktuPinjam == NaN) {
                     $("#confirmPinjaman").html("Tolong Inputkan waktu pinjaman yang valid");
                 }
-                if (jumlahPinjam < 1) {
+                if (jumlahPinjam < 1 || jumlahPinjam == NaN) {
                     $("#confirmPinjaman").html("Tolong Inputkan jumlah pinjaman yang valid");
                 }
                 else {
@@ -72,15 +77,16 @@
                     else if (waktuPinjam > 12) {
                         bunga = 1;
                     }
+                    $("#confirmPinjaman").html("Pinjaman berhasil, Total pengembalian: " + (jumlahPinjam + (jumlahPinjam * bunga / 100 * waktuPinjam)));
+                    jumlahPinjaman.push(jumlahPinjam + (jumlahPinjam * bunga / 100 * waktuPinjam));
+                    waktuPinjaman.push(waktuPinjam);
+                    bungaPinjaman.push(bunga);
+                    $("#contents").append("<div data-role='collapsible'>" + "<h4>Cicilan " + (counter+1) +"</h4>" + "<p>Jumlah Pinjaman :" + jumlahPinjaman[counter] + "</p><p>Lama Pinjaman :" + waktuPinjaman[counter] + "</p></div>");
+                    counter++;
+                    document.getElementById("number-pattern").value = "";
+                    document.getElementById("number-pattern1").value = "";
                 }
-                jumlahPinjaman.push(jumlahPinjam);
-                waktuPinjaman.push(waktuPinjam);
-                bungaPinjaman.push(bunga);
-                $("#confirmPinjaman").html("Pinjaman berhasil, Total pengembalian: " + (jumlahPinjam + (jumlahPinjam * bunga / 100 * waktuPinjam)));
-                document.getElementById("number-pattern").value = "";
-                document.getElementById("number-pattern1").value = "";
             }
-
         });
     </script>
 </body>
