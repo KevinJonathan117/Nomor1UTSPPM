@@ -5,6 +5,13 @@
     <title>Hello, World!</title>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <style>
+        .ui-footer {
+            position:fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,21 +26,21 @@
             <input type="number" name="number" pattern="[0-9]*" id="number-pattern1" value="" class="waktuPinjaman">
             <button class="ui-shadow ui-btn ui-corner-all" id="konfirmasi">Konfirmasi</button>
             <p id="confirmPinjaman"></p>
-            <a href="#win2">Go to Window 2</a>
+            <a href="#win2">Go to Informasi Cicilan</a>
         </article>
         <footer data-role="footer">
-            <h1>Some Footer</h1>
+            <h1>Powered By Kevin Jonathan</h1>
         </footer>
     </section>
     <section data-role="page" id="win2">
         <header data-role="header">
-            <h1>Halaman 2</h1>
+            <h1>Informasi Cicilan</h1>
         </header>
         <article data-role="content">
-            <a href="#win1">Go to Window 1</a>
+            <a href="#win1">Go to Input Pinjaman</a>
         </article>
         <footer data-role="footer">
-            <h1>Some Footer</h1>
+            <h1>Powered By Kevin Jonathan</h1>
         </footer>
     </section>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -73,7 +80,7 @@
                 document.getElementById("number-pattern").value = "";
                 document.getElementById("number-pattern1").value = "";
             }
-            
+
         });
     </script>
 </body>
