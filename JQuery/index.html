@@ -14,10 +14,10 @@
         </header>
         <article data-role="content">
             <label for="number-pattern">Pinjaman:</label>
-            <input type="number" name="number" pattern="[0-9]*" id="number-pattern" value="">
+            <input type="number" name="number" pattern="[0-9]*" id="number-pattern" value="" class="jumlahPinjaman">
             <label for="number-pattern">Waktu Pinjaman:</label>
-            <input type="number" name="number" pattern="[0-9]*" id="number-pattern" value="">
-            <button class="ui-shadow ui-btn ui-corner-all">Konfirmasi</button>
+            <input type="number" name="number" pattern="[0-9]*" id="number-pattern1" value="" class="waktuPinjaman">
+            <button class="ui-shadow ui-btn ui-corner-all" id="konfirmasi">Konfirmasi</button>
             <p id="confirmPinjaman"></p>
             <a href="#win2">Go to Window 2</a>
         </article>
@@ -39,7 +39,42 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script>
+        var jumlahPinjaman = [];
+        var waktuPinjaman = [];
+        var bungaPinjaman = [];
+        $(function () {
+            $("#konfirmasi").bind("tap", tapHandler);
 
+            function tapHandler(event) {
+                var bunga;
+                var waktuPinjam = parseFloat($(".waktuPinjaman").val());
+                var jumlahPinjam = parseFloat($(".jumlahPinjaman").val());
+                if (waktuPinjam < 1) {
+                    $("#confirmPinjaman").html("Tolong Inputkan waktu pinjaman yang valid");
+                }
+                if (jumlahPinjam < 1) {
+                    $("#confirmPinjaman").html("Tolong Inputkan jumlah pinjaman yang valid");
+                }
+                else {
+                    if (waktuPinjam >= 1 && waktuPinjam <= 6) {
+                        bunga = 2;
+                    }
+                    else if (waktuPinjam >= 7 && waktuPinjam <= 12) {
+                        bunga = 1.5;
+                    }
+                    else if (waktuPinjam > 12) {
+                        bunga = 1;
+                    }
+                }
+                jumlahPinjaman.push(jumlahPinjam);
+                waktuPinjaman.push(waktuPinjam);
+                bungaPinjaman.push(bunga);
+                $("#confirmPinjaman").html("Pinjaman berhasil, Total pengembalian: " + (jumlahPinjam + (jumlahPinjam * bunga / 100 * waktuPinjam)));
+                document.getElementById("number-pattern").value = "";
+                document.getElementById("number-pattern1").value = "";
+            }
+            
+        });
     </script>
 </body>
 
