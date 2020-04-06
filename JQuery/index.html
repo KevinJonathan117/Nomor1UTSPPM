@@ -79,9 +79,10 @@
                     }
                     $("#confirmPinjaman").html("Pinjaman berhasil, Total pengembalian: " + (jumlahPinjam + (jumlahPinjam * bunga / 100 * waktuPinjam)));
                     jumlahPinjaman.push(jumlahPinjam + (jumlahPinjam * bunga / 100 * waktuPinjam));
+
                     waktuPinjaman.push(waktuPinjam);
                     bungaPinjaman.push(bunga);
-                    $("#contents").append("<div data-role='collapsible'>" + "<h4>" + "Cicilan " + (counter+1) +"</h4>" + "<p>" + "Jumlah Pinjaman :" + jumlahPinjaman[counter] + "</p>" + "<p>" + "Lama Pinjaman :" + waktuPinjaman[counter] + "</p>" + "</div>");
+                    $("#contents").append("<div data-role='collapsible'>" + "<h4>" + "Cicilan " + (counter + 1) + "</h4>" + "<p>" + "Jumlah Pinjaman : " + jumlahPinjaman[counter] + "</p>" + "<p>" + "Lama Pinjaman : " + waktuPinjaman[counter] + "</p>" + "</div>");
                     counter++;
                     document.getElementById("number-pattern").value = "";
                     document.getElementById("number-pattern1").value = "";
