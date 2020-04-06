@@ -8,7 +8,28 @@
 </head>
 
 <body>
-   
+    <section data-role="page" id="win1">
+        <header data-role="header">
+            <h1>Halaman 1</h1>
+        </header>
+        <article data-role="content">
+            <a href="#win2">Go to Window 2</a>
+        </article>
+        <footer data-role="footer">
+            <h1>Some Footer</h1>
+        </footer>
+    </section>
+    <section data-role="page" id="win2">
+        <header data-role="header">
+            <h1>Halaman 2</h1>
+        </header>
+        <article data-role="content">
+            <a href="#win1">Go to Window 1</a>
+        </article>
+        <footer data-role="footer">
+            <h1>Some Footer</h1>
+        </footer>
+    </section>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script>
